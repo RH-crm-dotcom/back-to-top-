@@ -1,23 +1,35 @@
 (function() {
-  // Cria o iframe
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://SEU-USUARIO.github.io/SEU-REPO/embed/';
-  iframe.style.cssText = `
-    border: none;
-    width: 50px;
-    height: 50px;
+  // Cria o botão diretamente
+  var btn = document.createElement('div');
+  btn.innerHTML = '↑';
+  btn.title = 'Voltar ao topo';
+  btn.style.cssText = `
     position: fixed;
     bottom: 20px;
     right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #4285f4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     z-index: 9999;
-    overflow: hidden;
+    transition: all 0.3s;
   `;
   
-  // Cria o container
-  const container = document.createElement('div');
-  container.id = 'back-to-top-widget';
-  container.appendChild(iframe);
+  // Adiciona ao corpo
+  document.body.appendChild(btn);
   
-  // Adiciona ao corpo do documento
-  document.body.appendChild(container);
+  // Função de clique suave
+  btn.onclick = function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 })();
