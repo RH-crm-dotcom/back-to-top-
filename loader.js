@@ -1,5 +1,4 @@
 (function() {
-  // Cria o botão diretamente
   var btn = document.createElement('div');
   btn.innerHTML = '↑';
   btn.title = 'Voltar ao topo';
@@ -22,12 +21,11 @@
     transition: all 0.3s;
   `;
   
-  // Adiciona ao corpo
   document.body.appendChild(btn);
   
-  // Função de clique suave
   btn.onclick = function() {
-    window.scrollTo({
+    // Rola a página pai, não o iframe
+    window.parent.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
